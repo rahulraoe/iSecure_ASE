@@ -5,6 +5,25 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FEFEFE</color>
+
+    <color name="app_background">#190f25</color>
+    <color name="card_background">#2e2942</color>
+
+
+    <array name="array_dot_active">
+        <item>@color/white</item>
+        <item>@color/white</item>
+        <item>@color/white</item>
+        <item>@color/white</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/card_background</item>
+        <item>@color/card_background</item>
+        <item>@color/card_background</item>
+        <item>@color/card_background</item>
+    </array>
+
 </resources>

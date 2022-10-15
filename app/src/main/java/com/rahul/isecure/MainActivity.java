@@ -2,7 +2,11 @@ package com.rahul.isecure;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,6 +15,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("Hello World");
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+
+                if (auth.getCurrentUser() != null) {
+                    // already signed in
+                    Intent intent=new Intent(MainActivity.this,Home_Activity.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+                else{
+                    Intent intent=new Intent(MainActivity.this,OnBoarding_Activity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        }, 900);
+
     }
 }
