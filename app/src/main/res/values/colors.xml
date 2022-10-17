@@ -8,9 +8,13 @@
     <color name="black">#000000</color>
     <color name="white">#FEFEFE</color>
 
-    <color name="app_background">#190f25</color>
+    <color name="app_background">#E1E8ED</color>
     <color name="card_background">#2e2942</color>
+    <color name="editText_stroke">#673AB7</color>
 
+    <color name="button">#1DA1F2</color>
+    <color name="hint_color">#a6a6a6</color>
+    <color name="text_color">#000000</color>
 
     <array name="array_dot_active">
         <item>@color/white</item>

@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (auth.getCurrentUser() != null) {
                     // already signed in
-                    Intent intent=new Intent(MainActivity.this,Home_Activity.class);
+                    Intent intent=new Intent(MainActivity.this,Sign_Up_Activity.class);
                     startActivity(intent);
                     finish();
 
