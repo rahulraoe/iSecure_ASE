@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //splash screen done
         setTheme(R.style.AppNoBarTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
