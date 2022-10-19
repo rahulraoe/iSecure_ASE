@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppNoBarTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (auth.getCurrentUser() != null) {
                     // already signed in
-                    Intent intent=new Intent(MainActivity.this,Sign_Up_Activity.class);
+                    Intent intent=new Intent(MainActivity.this,OnBoarding_Activity.class);
                     startActivity(intent);
                     finish();
 

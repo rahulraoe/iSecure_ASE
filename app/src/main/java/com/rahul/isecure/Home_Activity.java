@@ -8,7 +8,10 @@ public class Home_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppNoBarTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
     }
 }

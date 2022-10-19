@@ -120,16 +120,13 @@ public class Sign_Up_Activity extends AppCompatActivity {
                                         DateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy hh.mm aa");
                                         final String    date = dateFormat2.format(new Date()).toString();
 
-                                        data.put("Iname", user_name.getText().toString());
-                                        data.put("Iemail", user_email.getText().toString());
-                                        data.put("Idate",date);
-                                        data.put("Icount","10000");
-                                        data.put("Igenerated","0");
-
-                                        data.put("Iuid",user.getUid());
+                                        data.put("name", user_name.getText().toString());
+                                        data.put("email", user_email.getText().toString());
+                                        data.put("date",date);
+                                        data.put("uid",user.getUid());
 
 
-                                        db.collection("IUsers").document(user.getUid())
+                                        db.collection("Users").document(user.getUid())
                                                 .set(data)
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
