@@ -31,21 +31,29 @@ public class Home_Activity extends AppCompatActivity {
                 .into(firstimg);
         Glide.with(Home_Activity.this)
                 .asBitmap()
-                .load("https://firebasestorage.googleapis.com/v0/b/ase-project17.appspot.com/o/Home_Icons%2Fdoorwithbg.jpg?alt=media&token=c4da35f9-b931-4eb4-ba3e-1f5ce2dec9ee")
+                .load("https://firebasestorage.googleapis.com/v0/b/ase-project17.appspot.com/o/Home_Icons%2Fdoorwithbg-removebg-preview.png?alt=media&token=95e28ef0-ec43-4462-9e05-3743b8fdd777")
                 .into(secondimg);
         Glide.with(Home_Activity.this)
                 .asBitmap()
-                .load("https://firebasestorage.googleapis.com/v0/b/ase-project17.appspot.com/o/Home_Icons%2Fcamara%20with%20bg.jpg?alt=media&token=7f78a0d0-c1ae-4733-83d6-9ed7bca31422")
+                .load("https://firebasestorage.googleapis.com/v0/b/ase-project17.appspot.com/o/Home_Icons%2Fcamara_with_bg-removebg-preview.png?alt=media&token=c727cdcb-c36a-4a06-84bf-698d0fa4a0e0")
                 .into(thirdimg);
         Glide.with(Home_Activity.this)
                 .asBitmap()
-                .load("https://firebasestorage.googleapis.com/v0/b/ase-project17.appspot.com/o/Home_Icons%2Falarm3.png?alt=media&token=a613674a-e5e4-413a-a4a4-fac4926fc3e1")
+                .load("https://firebasestorage.googleapis.com/v0/b/ase-project17.appspot.com/o/Home_Icons%2Falarm4%20copy.png?alt=media&token=1e5a4b42-7e8a-4e9a-a081-0e9faeb09f11")
                 .into(fourthimg);
 
         firstimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Home_Activity.this,SmartMat_Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        secondimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Home_Activity.this,Door_Activity.class);
                 startActivity(intent);
             }
         });
