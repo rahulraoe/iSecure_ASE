@@ -2,7 +2,9 @@ package com.rahul.isecure;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -39,6 +41,14 @@ public class Home_Activity extends AppCompatActivity {
                 .asBitmap()
                 .load("https://firebasestorage.googleapis.com/v0/b/ase-project17.appspot.com/o/Home_Icons%2Falarm3.png?alt=media&token=a613674a-e5e4-413a-a4a4-fac4926fc3e1")
                 .into(fourthimg);
+
+        firstimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Home_Activity.this,SmartMat_Activity.class);
+                startActivity(intent);
+            }
+        });
 
 
         Glide.with(Home_Activity.this)

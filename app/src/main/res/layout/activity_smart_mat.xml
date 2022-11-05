@@ -1,10 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SmartMat_Activity">
+    tools:context=".SmartMat_Activity"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/white">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+      <com.airbnb.lottie.LottieAnimationView
+          android:id="@+id/animationView"
+          android:layout_width="match_parent"
+          android:layout_height="400sp"
+          app:lottie_url="https://assets4.lottiefiles.com/private_files/lf30_woaw2kkp.json"
+          app:lottie_autoPlay="true"
+          android:visibility="gone"
+          app:lottie_loop="true"/>
+
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="400sp"
+          android:text="No one is on the mat. Checking actively."
+          android:layout_centerHorizontal="true"
+          android:gravity="center"
+          android:textColor="@color/black"
+          android:textStyle="bold"
+          android:layout_marginBottom="3sp"
+          android:maxLines="1" />
+
+
+      <com.airbnb.lottie.LottieAnimationView
+          android:id="@+id/animationView2"
+          android:layout_width="match_parent"
+          android:layout_height="400sp"
+          app:lottie_url="https://assets5.lottiefiles.com/private_files/lf30_jo7huq2d.json"
+          app:lottie_autoPlay="true"
+
+          app:lottie_loop="true"/>
+
+      <com.airbnb.lottie.LottieAnimationView
+          android:id="@+id/lav_toggle"
+          android:layout_width="wrap_content"
+          android:layout_height="100dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="8dp"
+          android:layout_marginEnd="8dp"
+          android:visibility="gone"
+          android:layout_marginBottom="8dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          android:layout_below="@+id/animationView"
+          app:layout_constraintVertical_bias="0.4"
+          app:lottie_autoPlay="false"
+          app:lottie_rawRes="@raw/radiobutton"
+          app:lottie_loop="false"
+          app:lottie_speed="1.75" />
+
+    </RelativeLayout>
+  </ScrollView>
+
+  </RelativeLayout>
