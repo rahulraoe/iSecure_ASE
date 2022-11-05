@@ -19,6 +19,8 @@ public class Home_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
+
+
         firstimg=(ImageView)findViewById(R.id.firstimg);
         secondimg=(ImageView)findViewById(R.id.secondimg);
         thirdimg=(ImageView)findViewById(R.id.thirdimg);
