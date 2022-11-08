@@ -20,6 +20,7 @@ public class SmartMat_Activity extends AppCompatActivity {
 
 LottieAnimationView animationView,animationView2;
 TextView text_anim;
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppBarTheme);
