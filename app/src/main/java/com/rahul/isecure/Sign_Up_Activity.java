@@ -139,7 +139,8 @@ public class Sign_Up_Activity extends AppCompatActivity {
                                                 myRef1.setValue("No one is on mat");
                                                 DatabaseReference myRef2= database.getReference("User").child(user1.getUid()).child("Devices/door");
                                                 myRef2.setValue("closed");
-
+                                                DatabaseReference myRef3= database.getReference("User").child(user1.getUid()).child("Devices/alarm");
+                                                myRef3.setValue("off");
                                                 dialog.dismiss();
                                                         Intent intent=new Intent(Sign_Up_Activity.this,Home_Activity.class);
                                                         startActivity(intent);

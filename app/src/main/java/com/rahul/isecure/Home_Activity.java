@@ -61,6 +61,14 @@ public class Home_Activity extends AppCompatActivity {
             }
         });
 
+        fourthimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Home_Activity.this,Alarm_Activity.class);
+                startActivity(intent);
+            }
+        });
+
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

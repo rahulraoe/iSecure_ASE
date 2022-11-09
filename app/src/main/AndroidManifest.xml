@@ -15,6 +15,13 @@
         android:theme="@style/Theme.ISecure_ASE"
         tools:targetApi="31">
         <activity
+            android:name=".Alarm_Activity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Door_Activity"
             android:exported="false">
             <meta-data
