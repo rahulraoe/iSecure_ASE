@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Home_Activity extends AppCompatActivity {
 
@@ -57,6 +58,16 @@ public class Home_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(Home_Activity.this,Door_Activity.class);
                 startActivity(intent);
+            }
+        });
+
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent it=new Intent(Home_Activity.this,MainActivity.class);
+                startActivity(it);
+                finish();
             }
         });
 

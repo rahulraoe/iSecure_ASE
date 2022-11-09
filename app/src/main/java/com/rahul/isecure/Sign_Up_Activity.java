@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DateFormat;
@@ -114,7 +116,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        FirebaseUser user1 = mAuth.getCurrentUser();
                                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                                         Map<String, Object> data = new HashMap<>();
                                         DateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy hh.mm aa");
@@ -123,27 +125,52 @@ public class Sign_Up_Activity extends AppCompatActivity {
                                         data.put("name", user_name.getText().toString());
                                         data.put("email", user_email.getText().toString());
                                         data.put("date",date);
-                                        data.put("uid",user.getUid());
+                                        data.put("uid",user1.getUid());
 
+                                        User newuser=new User(user_name.getText().toString(),user_email.getText().toString(),date, user1.getUid());
 
-                                        db.collection("Users").document(user.getUid())
-                                                .set(data)
-                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void aVoid) {
-                                                        dialog.dismiss();
+                                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                        DatabaseReference myRef = database.getReference("User");
+
+                                        myRef.child(user1.getUid()).setValue(newuser).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                DatabaseReference myRef1 = database.getReference("User").child(user1.getUid()).child("Devices/smartmat");
+                                                myRef1.setValue("No one is on mat");
+                                                DatabaseReference myRef2= database.getReference("User").child(user1.getUid()).child("Devices/door");
+                                                myRef2.setValue("closed");
+
+                                                dialog.dismiss();
                                                         Intent intent=new Intent(Sign_Up_Activity.this,Home_Activity.class);
                                                         startActivity(intent);
                                                         finish();
-                                                    }
-                                                })
-                                                .addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        Toast.makeText(Sign_Up_Activity.this, "Sign Up failed. Please try again later.", Toast.LENGTH_LONG).show();
-                                                        dialog.dismiss();
-                                                    }
-                                                });
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(Sign_Up_Activity.this, "Sign Up failed. Please try again later.", Toast.LENGTH_LONG).show();
+                                                     dialog.dismiss();
+                                            }
+                                        });
+
+//                                        db.collection("Users").document(user.getUid())
+//                                                .set(data)
+//                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                                    @Override
+//                                                    public void onSuccess(Void aVoid) {
+//                                                        dialog.dismiss();
+//                                                        Intent intent=new Intent(Sign_Up_Activity.this,Home_Activity.class);
+//                                                        startActivity(intent);
+//                                                        finish();
+//                                                    }
+//                                                })
+//                                                .addOnFailureListener(new OnFailureListener() {
+//                                                    @Override
+//                                                    public void onFailure(@NonNull Exception e) {
+//                                                        Toast.makeText(Sign_Up_Activity.this, "Sign Up failed. Please try again later.", Toast.LENGTH_LONG).show();
+//                                                        dialog.dismiss();
+//                                                    }
+//                                                });
 
                                     }
                                     else {
