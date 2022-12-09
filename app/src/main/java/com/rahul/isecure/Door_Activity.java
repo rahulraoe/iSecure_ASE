@@ -1,7 +1,9 @@
 package com.rahul.isecure;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +37,39 @@ public class Door_Activity extends AppCompatActivity {
         toggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changeState();
+                AlertDialog.Builder builder = new AlertDialog.Builder(Door_Activity.this);
+
+                builder.setTitle("Confirm");
+                builder.setMessage("Are you sure?");
+
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        changeState();
+
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // Do nothing
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+
+
+                alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.app_background));
+                alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.app_background));
+
+
+
             }
         });
 
@@ -52,8 +86,7 @@ public class Door_Activity extends AppCompatActivity {
         myRef1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-// This method is called once with the initial value and again
-                // whenever data at this location is updated.
+
                 String status = dataSnapshot.getValue(String.class);
 
                 if(status.equals("closed")){
@@ -70,6 +103,7 @@ public class Door_Activity extends AppCompatActivity {
                 }
                 else
                 {
+                    //Toast.makeText(Door_Activity.this, "hello open", Toast.LENGTH_SHORT).show();
                     animationView2.setVisibility(View.VISIBLE);
                     animationView.setVisibility(View.GONE);
 //
@@ -115,7 +149,7 @@ public class Door_Activity extends AppCompatActivity {
             DatabaseReference myRef1 = database.getReference("User").child(user1.getUid()).child("Devices/door");
             myRef1.setValue("closed");
 
-            //---- Your code here------
+
         } else {
             toggle.setMinAndMaxProgress(0.5f, 1f);
             toggle.playAnimation();
@@ -125,6 +159,7 @@ public class Door_Activity extends AppCompatActivity {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef1 = database.getReference("User").child(user1.getUid()).child("Devices/door");
             myRef1.setValue("open");
+
 
             //---- Your code here------
         }

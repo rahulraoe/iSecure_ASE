@@ -61,6 +61,14 @@ public class Home_Activity extends AppCompatActivity {
             }
         });
 
+        thirdimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Home_Activity.this,Camera_Activity.class);
+                startActivity(intent);
+            }
+        });
+
         fourthimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,10 +80,10 @@ public class Home_Activity extends AppCompatActivity {
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent it=new Intent(Home_Activity.this,MainActivity.class);
-                startActivity(it);
-                finish();
+
+                Intent intent=new Intent(Home_Activity.this,Account.class);
+                startActivity(intent);
+
             }
         });
 

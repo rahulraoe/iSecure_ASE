@@ -5,6 +5,23 @@ public class User {
     String email;
     String date;
     String uid;
+String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public User(String name, String email, String date, String uid, String address) {
+        this.name = name;
+        this.email = email;
+        this.date = date;
+        this.uid = uid;
+        this.address = address;
+    }
 
     public User(String name, String email, String date, String uid) {
         this.name = name;

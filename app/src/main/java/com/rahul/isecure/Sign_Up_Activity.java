@@ -117,7 +117,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         FirebaseUser user1 = mAuth.getCurrentUser();
-                                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
                                         Map<String, Object> data = new HashMap<>();
                                         DateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy hh.mm aa");
                                         final String    date = dateFormat2.format(new Date()).toString();
@@ -127,7 +127,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
                                         data.put("date",date);
                                         data.put("uid",user1.getUid());
 
-                                        User newuser=new User(user_name.getText().toString(),user_email.getText().toString(),date, user1.getUid());
+                                        User newuser=new User(user_name.getText().toString(),user_email.getText().toString(),date, user1.getUid(),user_address.getText().toString());
 
                                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                                         DatabaseReference myRef = database.getReference("User");
